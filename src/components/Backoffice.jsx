@@ -20,6 +20,7 @@ class Backoffice extends React.Component {
   handleAlert = (response) => {
     this.setState({showAlert: true, success: response ? true : false})
   }
+
   render() {
     return (
       <>

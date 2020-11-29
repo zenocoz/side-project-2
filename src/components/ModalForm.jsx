@@ -46,7 +46,7 @@ class ModalForm extends React.Component {
           onHide={() => this.setState({show: false})}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Enter Product Details</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
@@ -65,7 +65,7 @@ class ModalForm extends React.Component {
                 <Form.Control
                   id="description"
                   type="text"
-                  placeholder="Enter name"
+                  placeholder="Enter descriptiom"
                   value={this.state.details.description}
                   onChange={(e) => this.handleChange(e)}
                 />
@@ -75,7 +75,7 @@ class ModalForm extends React.Component {
                 <Form.Control
                   id="brand"
                   type="text"
-                  placeholder="Enter name"
+                  placeholder="Enter brand"
                   value={this.state.details.brand}
                   onChange={(e) => this.handleChange(e)}
                 />
@@ -85,7 +85,7 @@ class ModalForm extends React.Component {
                 <Form.Control
                   id="price"
                   type="number"
-                  placeholder="Enter name"
+                  placeholder="Enter price"
                   value={this.state.details.price}
                   onChange={(e) => this.handleChange(e)}
                 />
@@ -95,21 +95,22 @@ class ModalForm extends React.Component {
                 <Form.Control
                   id="imageUrl"
                   type="text"
-                  placeholder="Enter name"
+                  placeholder="Enter image Url"
                   value={this.state.details.imageUrl}
                   onChange={(e) => this.handleChange(e)}
                 />
               </Form.Group>
-
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary">Close</Button>
+            <Button
+              variant="secondary"
+              onClick={() => this.setState({show: false})}
+            >
+              Close
+            </Button>
             <Button variant="primary" onClick={() => this.handleSubmit()}>
-              Save Changes
+              Submit
             </Button>
           </Modal.Footer>
         </Modal>
