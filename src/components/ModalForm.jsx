@@ -19,8 +19,11 @@ class ModalForm extends React.Component {
 
   handleSubmit = () => {
     DataSource.postItems(this.state.details, (response) => {
+      this.setState({details: {}, show: false})
       if (response) {
-        alert("item posted")
+        this.props.handleAlert(true)
+      } else {
+        this.props.handleAlert(false)
       }
     })
   }
@@ -28,7 +31,13 @@ class ModalForm extends React.Component {
   render() {
     return (
       <>
-        <Button variant="primary" onClick={() => this.setState({show: true})}>
+        <Button
+          variant="primary"
+          onClick={() => {
+            this.props.closeAlert()
+            this.setState({show: true})
+          }}
+        >
           Launch demo modal
         </Button>
 
