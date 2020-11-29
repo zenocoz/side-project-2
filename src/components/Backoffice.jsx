@@ -21,6 +21,18 @@ class Backoffice extends React.Component {
     this.setState({showAlert: true, success: response ? true : false})
   }
 
+  componentDidUpdate = (previousProps) => {
+    if (previousProps.query !== this.props.query) {
+      DataSource.fetchItems((data) => {
+        this.setState({
+          products: data.filter((product) =>
+            product.name.includes(this.props.query)
+          ),
+        })
+      })
+    }
+  }
+
   render() {
     return (
       <>

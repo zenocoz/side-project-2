@@ -2,7 +2,7 @@ import React from "react"
 import {Navbar, Nav, Form, FormControl, Button} from "react-bootstrap"
 import {Link} from "react-router-dom"
 
-export default function NavBar() {
+export default function NavBar(props) {
   return (
     <Navbar bg="dark" variant="dark">
       <Navbar.Brand href="#home">Navbar</Navbar.Brand>
@@ -19,7 +19,13 @@ export default function NavBar() {
       </Nav>
 
       <Form inline>
-        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+        <FormControl
+          type="text"
+          placeholder="Search"
+          className="mr-sm-2"
+          onChange={props.onChangeHandler}
+          value={props.query}
+        />
         <Button variant="outline-info">Search</Button>
       </Form>
     </Navbar>

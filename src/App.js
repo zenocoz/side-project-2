@@ -6,16 +6,36 @@ import Home from "./components/Home"
 import Backoffice from "./components/Backoffice"
 import Cart from "./components/Cart"
 import Navbar from "./components/NavBar"
+import React from "react"
 
-function App() {
-  return (
-    <Router>
-      <Navbar />
-      <Route path="/" exact component={Home} />
-      <Route path="/backoffice" exact component={Backoffice} />
-      <Route path="/cart" exact component={Cart} />
-    </Router>
-  )
+class App extends React.Component {
+  state = {
+    query: "",
+  }
+
+  onChangeHandler = (e) => {
+    this.setState({query: e.target.value})
+  }
+
+  render() {
+    return (
+      <Router>
+        <Navbar
+          onChangeHandler={this.onChangeHandler}
+          query={this.state.query}
+        />
+        <Route path="/" exact component={Home} />
+
+        <Route
+          path="/backoffice"
+          exact
+          render={(props) => <Backoffice {...props} query={this.state.query} />}
+        />
+
+        <Route path="/cart" exact component={Cart} />
+      </Router>
+    )
+  }
 }
 
 export default App
